@@ -6,95 +6,98 @@
   <title>EGAT Retirement Page</title>
   <style>
     :root {
-      --bg: #f3f6fa;
+      --bg: #edf4fb;
       --card: #ffffff;
       --ink: #0f172a;
       --muted: #475569;
       --accent: #dc2626;
-      --line: #dbe3ec;
+      --accent2: #0f766e;
+      --line: #d7e2ee;
+      --shadow: 0 14px 40px rgba(15,23,42,.08);
     }
     * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: "Sarabun", "Noto Sans Thai", system-ui, sans-serif;
-      background: radial-gradient(circle at top left, #ffffff 0%, var(--bg) 65%);
-      color: var(--ink);
-    }
-    .wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 22px 16px 24px;
-    }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 18px;
-      box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
-    }
-    h1 {
-      margin: 0 0 8px;
-      font-size: clamp(1.3rem, 2.5vw, 2rem);
-      line-height: 1.2;
-    }
-    .meta { color: var(--muted); margin: 0 0 14px; }
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 14px;
-    }
-    .btn {
-      display: inline-block;
-      text-decoration: none;
-      background: var(--accent);
-      color: #fff;
-      padding: 10px 14px;
-      border-radius: 10px;
-      font-weight: 600;
-    }
-    .btn.secondary {
-      background: #1d4ed8;
-    }
-    .note {
-      font-size: 0.95rem;
-      color: var(--muted);
-      margin: 8px 0 14px;
-    }
-    iframe {
-      width: 100%;
-      min-height: min(78vh, 900px);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      background: #fff;
-    }
-    @media (max-width: 640px) {
-      .wrap { padding: 12px; }
-      .card { padding: 14px; }
-      iframe { min-height: 72vh; }
-    }
+    body { margin:0; font-family:"Sarabun","Noto Sans Thai",system-ui,sans-serif; color:var(--ink); background:linear-gradient(180deg,#f8fbff 0%,var(--bg) 100%); }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 20px 16px 32px; }
+    .hero { background: var(--card); border:1px solid var(--line); border-radius:20px; padding:20px; box-shadow:var(--shadow); }
+    h1 { margin:0 0 8px; font-size: clamp(1.4rem, 3vw, 2.25rem); }
+    .meta { color:var(--muted); margin:0; }
+    .actions { display:flex; flex-wrap:wrap; gap:10px; margin:18px 0 0; }
+    .btn { text-decoration:none; display:inline-block; padding:10px 14px; border-radius:12px; font-weight:700; color:#fff; background:var(--accent); }
+    .btn.alt { background:#1d4ed8; }
+    .btn.soft { background:var(--accent2); }
+    .grid { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:14px; margin-top:16px; }
+    .stat, .card { background:var(--card); border:1px solid var(--line); border-radius:18px; padding:16px; box-shadow:var(--shadow); }
+    .stat .label { color:var(--muted); font-size:.95rem; }
+    .stat .value { margin-top:6px; font-size:1.3rem; font-weight:700; }
+    .section { margin-top:16px; }
+    .section h2 { margin:0 0 12px; font-size:1.1rem; }
+    table { width:100%; border-collapse:collapse; font-size:.97rem; }
+    th, td { padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    th { background:#f8fafc; font-weight:700; }
+    .num { text-align:right; font-variant-numeric: tabular-nums; }
+    iframe { width:100%; min-height:min(74vh,860px); border:1px solid var(--line); border-radius:14px; background:#fff; }
+    .note { color:var(--muted); font-size:.95rem; margin:0 0 12px; }
+    @media (max-width: 900px) { .grid { grid-template-columns:1fr; } }
+    @media (max-width: 640px) { .wrap { padding:12px; } .hero,.card,.stat { padding:14px; } table { font-size:.9rem; } th,td { padding:8px; } }
   </style>
 </head>
 <body>
   <main class="wrap">
-    <section class="card">
+    <section class="hero">
       <h1>EGAT Retirement Dashboard</h1>
-      <p class="meta">หน้าแสดงผลถูกย้ายมาอยู่บน GitHub Pages แล้ว เพื่อให้เปิดได้ง่ายจากเครือข่ายที่จำกัดการเข้าเซิร์ฟเวอร์โดยตรง</p>
-
+      <p class="meta">หน้าแสดงผลบน GitHub Pages พร้อมไฟล์ Excel ล่าสุด และสรุปข้อมูลจากบอท EGAT Retirement</p>
       <div class="actions">
-        <a class="btn" href="https://app.powerbi.com/view?r=eyJrIjoiMzZjYWU3YmQtNWQ1Ny00NjdjLWI1MmEtYjExY2ZiYWIxMzNiIiwidCI6IjVmZWJjNjlmLThlOWMtNDcwOC1iNzBlLWQ4YzYyYmUxODA1YiIsImMiOjEwfQ%3D%3D" target="_blank" rel="noopener">เปิดในแท็บใหม่</a>
-        <a class="btn secondary" href="https://github.com/drnon/egat-retirement-page" target="_blank" rel="noopener">ดู Source บน GitHub</a>
+        <a class="btn" href="https://app.powerbi.com/view?r=eyJrIjoiMzZjYWU3YmQtNWQ1Ny00NjdjLWI1MmEtYjExY2ZiYWIxMzNiIiwidCI6IjVmZWJjNjlmLThlOWMtNDcwOC1iNzBlLWQ4YzYyYmUxODA1YiIsImMiOjEwfQ%3D%3D" target="_blank" rel="noopener">เปิด Power BI</a>
+        <a class="btn alt" href="./EGAT%20Retirement.xlsx">ดาวน์โหลด Excel ล่าสุด</a>
+        <a class="btn soft" href="https://github.com/drnon/egat-retirement-page" target="_blank" rel="noopener">ดู Source บน GitHub</a>
       </div>
+    </section>
 
-      <p class="note">ถ้า iframe ไม่แสดงผล ให้กดปุ่ม "เปิดในแท็บใหม่" ด้านบนได้ทันที</p>
+    <section class="grid">
+      <div class="stat"><div class="label">valuation date</div><div class="value">2026-04-01</div></div>
+      <div class="stat"><div class="label">page updated</div><div class="value">2026-04-03 06:33:49 ICT</div></div>
+      <div class="stat"><div class="label">average cumulative return</div><div class="value">4.24</div></div>
+    </section>
 
-      <iframe
-        title="EGAT Retirement Power BI"
-        src="https://app.powerbi.com/view?r=eyJrIjoiMzZjYWU3YmQtNWQ1Ny00NjdjLWI1MmEtYjExY2ZiYWIxMzNiIiwidCI6IjVmZWJjNjlmLThlOWMtNDcwOC1iNzBlLWQ4YzYyYmUxODA1YiIsImMiOjEwfQ%3D%3D"
-        loading="lazy"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen>
-      </iframe>
+    <section class="card section">
+      <h2>สรุปล่าสุด ณ 2026-04-01</h2>
+      <p class="note">เวลาบันทึกข้อมูลในไฟล์: 20:13:43 | หน่วยผลตอบแทนสะสมเป็นตัวเลขปกติ ไม่ใช่รูปแบบ %</p>
+      <table>
+        <thead>
+          <tr><th>กองทุน</th><th class="num">NAV</th><th class="num">MTD</th><th class="num">ผลตอบแทนสะสม</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>ตราสารหนี้ (EGAT-1)</td><td class='num'>15.7297</td><td class='num'>0.44</td><td class='num'>0.15</td></tr>
+<tr><td>ตราสารทุน (EGAT-2)</td><td class='num'>39.7081</td><td class='num'>1.56</td><td class='num'>17.00</td></tr>
+<tr><td>อสังหาริมทรัพย์และโครงสร้างพื้นฐาน (EGAT-3)</td><td class='num'>8.4877</td><td class='num'>0.87</td><td class='num'>-1.90</td></tr>
+<tr><td>ตราสารทุนต่างประเทศ (EGAT-4)</td><td class='num'>6.9460</td><td class='num'>2.44</td><td class='num'>-3.73</td></tr>
+<tr><td>ตราสารทุนต่างประเทศแบบอิงดัชนี (EGAT-5)</td><td class='num'>14.9182</td><td class='num'>2.70</td><td class='num'>-1.88</td></tr>
+<tr><td>การลงทุนตามหลักศาสนาอิสลาม (EGAT-6)</td><td class='num'>11.4236</td><td class='num'>0.71</td><td class='num'>15.80</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card section">
+      <h2>สรุปย้อนหลัง 5 วัน</h2>
+      <table>
+        <thead>
+          <tr><th>กองทุน</th><th>1/4/69</th><th>31/3/69</th><th>30/3/69</th><th>27/3/69</th><th>26/3/69</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>ตราสารหนี้ (E1)</td><td class='num'>0.15</td><td class='num'>-0.29</td><td class='num'>-0.42</td><td class='num'>-0.45</td><td class='num'>-0.35</td></tr>
+<tr><td>ตราสารทุน (E2)</td><td class='num'>17.00</td><td class='num'>15.20</td><td class='num'>15.07</td><td class='num'>14.64</td><td class='num'>14.49</td></tr>
+<tr><td>อสังหาริมทรัพย์และโครงสร้างพื้นฐาน (E3)</td><td class='num'>-1.90</td><td class='num'>-2.74</td><td class='num'>-2.85</td><td class='num'>-2.34</td><td class='num'>-2.89</td></tr>
+<tr><td>ตราสารทุนต่างประเทศ (E4)</td><td class='num'>-3.73</td><td class='num'>-6.02</td><td class='num'>-5.30</td><td class='num'>-4.09</td><td class='num'>-1.71</td></tr>
+<tr><td>ตราสารทุนต่างประเทศแบบอิงดัชนี (E5)</td><td class='num'>-1.88</td><td class='num'>-4.45</td><td class='num'>-4.21</td><td class='num'>-2.80</td><td class='num'>-0.75</td></tr>
+<tr><td>การลงทุนตามหลักศาสนาอิสลาม (E6)</td><td class='num'>15.80</td><td class='num'>14.99</td><td class='num'>15.79</td><td class='num'>15.56</td><td class='num'>15.51</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card section">
+      <h2>Power BI Dashboard</h2>
+      <p class="note">ถ้า iframe ไม่แสดงผล ให้เปิดในแท็บใหม่จากปุ่มด้านบน</p>
+      <iframe title="EGAT Retirement Power BI" src="https://app.powerbi.com/view?r=eyJrIjoiMzZjYWU3YmQtNWQ1Ny00NjdjLWI1MmEtYjExY2ZiYWIxMzNiIiwidCI6IjVmZWJjNjlmLThlOWMtNDcwOC1iNzBlLWQ4YzYyYmUxODA1YiIsImMiOjEwfQ%3D%3D" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </section>
   </main>
 </body>
